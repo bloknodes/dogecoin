@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  dogecoind:
+    # image: bloknodes/dogecoin:1.14.7
+    build: .
+    container_name: dogecoind
+    restart: unless-stopped
+    cpus: 1.0
+    mem_limit: "512M"
+    stop_signal: SIGINT
+    stop_grace_period: 2m # wait 2m before sending SIGKILL
+    ports:
+      # - 9332:9332 # mainnet rpcport
+      - 44555:44555 # testnet rpcport
+      - 44556:44556 
+    environment:
+      - NETWORK=testnet
+    networks:
+      - bloknodes-network
+    volumes:
+      - bloknodes-volume:/blockchain
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  bloknodes-network:
+    name: bloknodes-network
+    
+volumes:
+  bloknodes-volume: {}
