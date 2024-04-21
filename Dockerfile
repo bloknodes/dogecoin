@@ -8,7 +8,7 @@ ENV CRYPTO_ARCH=$CRYPTO_ARCH
 COPY bin/run.sh /usr/bin/run.sh
 RUN chmod +x /usr/bin/run.sh
 
-#COPY configs/mainnet.conf /etc/litecoin/mainnet.conf
-COPY configs/testnet.conf /etc/litecoin/testnet.conf
+#COPY configs/mainnet.conf /etc/dogecoin/mainnet.conf
+COPY configs/testnet.conf /etc/dogecoin/testnet.conf
 
 CMD ["/usr/bin/run.sh"]
