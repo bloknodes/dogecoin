@@ -45,5 +45,5 @@ jobs:
         build-args: |
           CRYPTO_ARCH=${{ matrix.arch }}
         tags: |
-          ${{ secrets.DOCKERHUB_USER }}/${{ github.event.repository.name }}:${{ steps.vars.outputs.tag }}
-          ${{ secrets.DOCKERHUB_USER }}/${{ github.event.repository.name }}:latest
+          ${{ secrets.DOCKERHUB_USER }}/${{ github.event.repository.name }}:${{ matrix.arch }}-${{ steps.vars.outputs.tag }}
+          ${{ secrets.DOCKERHUB_USER }}/${{ github.event.repository.name }}:${{ matrix.arch }}-latest
